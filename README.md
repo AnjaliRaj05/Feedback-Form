@@ -27,3 +27,20 @@ The **Feedback Form Project** is a full-stack web application built using the **
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/feedback-form.git
+2. Install dependencies:
+   ```bash
+   npm install
+3. Run the forntend application
+   ```bash
+   npm run dev
+
+4. add .env in Your root file in backend folder
+   ```bash
+   PORT=
+   DEV_MODE=
+   MONGO_URL= 
+5. Run the backend server:
+    ```bash
+    cd backend
+    npm install
+    npm start
