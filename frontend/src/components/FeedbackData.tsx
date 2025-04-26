@@ -95,7 +95,6 @@ const FeedbackData = () => {
         <p>No feedback data available.</p>
       )}
 
-      {/* Confirmation Modal */}
       {showModal && (
         <div style={{
           position: 'fixed',

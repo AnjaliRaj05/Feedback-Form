@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Survey } from 'survey-react-ui';
 import 'survey-core/survey-core.css';
-import { Model } from 'survey-core';
+import { Model, SurveyModel } from 'survey-core';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 
 const Feedback = () => {
-  const [surveyModel, setSurveyModel] = useState<any>(null);
+  const [surveyModel, setSurveyModel] = useState<SurveyModel | null>(null); // <- fixed
   const router = useRouter();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Feedback = () => {
         const schema = response.data;
         const survey = new Model(schema);
 
-        survey.onComplete.add(async (sender) => {
+        survey.onComplete.add(async (sender: SurveyModel) => {
           try {
             await axios.post('https://feedback-backend-tog9.onrender.com/api/v1/feedback', sender.data);
             toast.success('Thanks for your feedback!');
