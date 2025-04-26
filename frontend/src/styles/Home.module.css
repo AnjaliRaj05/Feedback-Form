@@ -1,0 +1,5 @@
+/* Override the problematic rule */
+.survey-core-class-name {
+    justify-content: flex-end !important;
+  }
+  
