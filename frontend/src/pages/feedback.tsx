@@ -15,13 +15,13 @@ const Feedback = () => {
   useEffect(() => {
     const fetchSurveySchema = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/feedback-form');
+        const response = await axios.get('https://feedback-backend-tog9.onrender.com/api/v1/feedback-form');
         const schema = response.data;
         const survey = new Model(schema);
 
         survey.onComplete.add(async (sender) => {
           try {
-            await axios.post('http://localhost:5000/api/v1/feedback', sender.data);
+            await axios.post('https://feedback-backend-tog9.onrender.com/api/v1/feedback', sender.data);
             toast.success('Thanks for your feedback!');
             setTimeout(() => router.push('/'), 2000);
           } catch (error) {

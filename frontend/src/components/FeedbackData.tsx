@@ -27,7 +27,7 @@ const FeedbackData = () => {
 
   const fetchFeedbackData = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/v1/feedback-data');
+      const response = await axios.get('https://feedback-backend-tog9.onrender.com/api/v1/feedback-data');
       const sortedData = response.data.sort(
         (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
@@ -50,7 +50,7 @@ const FeedbackData = () => {
   const handleDelete = async () => {
     if (!selectedId) return;
     try {
-      await axios.delete(`http://localhost:5000/api/v1/feedback-data/${selectedId}`);
+      await axios.delete('https://feedback-backend-tog9.onrender.com/api/v1/feedback-data/' + selectedId);
       toast.success('Feedback deleted successfully.');
       setFeedbackData(prevData => prevData.filter(feedback => feedback._id !== selectedId));
     } catch (error) {
@@ -71,7 +71,7 @@ const FeedbackData = () => {
               <p><strong>Email:</strong> {feedback.formData['email'] || 'N/A'}</p>
               <p><strong>Platform Satisfaction:</strong> <StarRating rating={Number(feedback.formData['platform-satisfaction'])} /></p>
               <p><strong>Performance Satisfaction:</strong> <StarRating rating={Number(feedback.formData['usability-satisfaction'])} /></p>
-              <p><strong>Feature Suggestions:</strong> {feedback.formData['feature-suggestions'] || 'None'}</p>
+              <p><strong>Feedback Comment :</strong> {feedback.formData['feature-suggestions'] || 'None'}</p>
               <p><strong>NPS Score:</strong> {feedback.formData['nps-score'] || 'N/A'}</p>
               <p><strong>Submitted At:</strong> {formatDate(feedback.createdAt)}</p>
               <button 
